@@ -1011,6 +1011,12 @@ li {
 }
 
 #prodotti {
+	.postTitle {
+		height: 300px;
+		@media (max-width: 767px) {
+			height: 170px;
+		}
+	}
 	.postContent {
 		p {
 			padding: 100px;

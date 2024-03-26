@@ -27,7 +27,7 @@ while (have_posts()):
 						class="text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
 						<div>
 							<header class="page-header text-uppercase fw-bold postTitle py-4 py-xl-5">
-								<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+								<?php //the_title('<h1 class="entry-title">', '</h1>'); ?>
 							</header>
 						</div>
 					</div>

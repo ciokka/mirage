@@ -217,10 +217,10 @@ add_action('admin_bar_menu', 'aggiungi_voce_wpadminbar', 999);
 
 function wp_maintenance_mode()
 {
-	if (!current_user_can('administrator')) {
+	if (!current_user_can('administrator') && !is_user_logged_in()) {
 		wp_die('
         <h1>Stiamo aggiornando il nostro sito.</h1>
         <p>Sul sito sono in corso degli aggiornamenti. Si prega di ritornare più tardi.</p> ', 'Sito in modalità manutenzione');
 	}
 }
-add_action('template_redirect', 'wp_maintenance_mode');
+add_action('get_header', 'wp_maintenance_mode');

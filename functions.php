@@ -215,12 +215,13 @@ function aggiungi_voce_wpadminbar($wp_admin_bar)
 // Aggiungi la funzione alla barra di amministrazione
 add_action('admin_bar_menu', 'aggiungi_voce_wpadminbar', 999);
 
-function wp_maintenance_mode()
-{
-	if (!current_user_can('administrator') && !is_user_logged_in()) {
-		wp_die('
-        <h1>Stiamo aggiornando il nostro sito.</h1>
-        <p>Sul sito sono in corso degli aggiornamenti. Si prega di ritornare più tardi.</p> ', 'Sito in modalità manutenzione');
-	}
-}
-add_action('get_header', 'wp_maintenance_mode');
+// FUNZIONE PER SITO IN MANUTENZIONE
+// function wp_maintenance_mode()
+// {
+// 	if (!current_user_can('administrator') && !is_user_logged_in()) {
+// 		wp_die('
+//         <h1>Stiamo aggiornando il nostro sito.</h1>
+//         <p>Sul sito sono in corso degli aggiornamenti. Si prega di ritornare più tardi.</p> ', 'Sito in modalità manutenzione');
+// 	}
+// }
+// add_action('get_header', 'wp_maintenance_mode');

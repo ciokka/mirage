@@ -1,4 +1,5 @@
 <?php
+
 use WprAddons\Modules\Grid\Widgets\custom_Wpr_Grid;
 
 /**
@@ -77,7 +78,7 @@ function my_show_columns($name)
 
 function jsProdotti()
 {
-	?>
+?>
 	<link rel='stylesheet' id='wpr-lightgallery-css-css'
 		href='/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/lightgallery.min.css?ver=1.3.56'
 		media='all' />
@@ -85,19 +86,19 @@ function jsProdotti()
 		let all = jQuery(".products-filter-all");
 		let links = jQuery(".products-filter");
 
-		links.on('click', function (e) {
+		links.on('click', function(e) {
 			let target = jQuery(this).data('target');
 			e.preventDefault();
 			jQuery(".selected-brand").removeClass("selected-brand");
 			jQuery(this).addClass("selected-brand");
 			jQuery('.boxProdotti').fadeOut("fast");
-			window.setTimeout(function () {
+			window.setTimeout(function() {
 				jQuery('.' + target).fadeIn("fast");
 				jQuery([document.documentElement, document.body]).scrollTop(jQuery(".products-filter-all").offset().top);
 			}, 300);
 			return false;
 		});
-		all.on('click', function (e) {
+		all.on('click', function(e) {
 			e.preventDefault();
 			jQuery(".selected-brand").removeClass("selected-brand");
 			jQuery('.boxProdotti').fadeIn("fast");
@@ -107,7 +108,7 @@ function jsProdotti()
 
 		var ll = jQuery(".wpr-grid-item");
 		console.log(ll);
-		ll.each(function (i) {
+		ll.each(function(i) {
 			var link = jQuery(this).find("[data-url]");
 			console.log(link);
 			console.log(i);
@@ -125,14 +126,14 @@ function jsProdotti()
 			jQuery(".selected-brand").removeClass("selected-brand");
 			jQuery("#" + target).addClass("selected-brand");
 			jQuery('.boxProdotti').fadeOut("fast");
-			window.setTimeout(function () {
+			window.setTimeout(function() {
 				jQuery('.' + target).fadeIn("fast");
 				//jQuery([document.documentElement, document.body]).scrollTop(jQuery(".products-filter-all").offset().top);
 			}, 300);
 		}
 	</script>
 
-	<?php
+<?php
 }
 
 add_action('wp_footer', 'jsProdotti', 100);
@@ -149,37 +150,77 @@ add_action('init', 'Custom_Wpr_Grid', 100);
 add_action('wp_head', 'my_analytics', 20);
 function my_analytics()
 {
-	?>
+?>
 	<!-- Google Tag Manager -->
-	<script>(function (w, d, s, l, i) {
-			w[l] = w[l] || []; w[l].push({
-				'gtm.start':
-					new Date().getTime(), event: 'gtm.js'
-			}); var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-M2RGNTF');</script>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-M2RGNTF');
+	</script>
 	<!-- End Google Tag Manager -->
 	<script type="text/javascript">
-	var _iub = _iub || [];
-	_iub.csConfiguration = {"askConsentAtCookiePolicyUpdate":true,"floatingPreferencesButtonCaptionColor":"#FFFFFF","floatingPreferencesButtonColor":"#000000","floatingPreferencesButtonDisplay":"anchored-bottom-left","perPurposeConsent":true,"siteId":3132077,"whitelabel":false,"gdprAppliesGlobally":false,"cookiePolicyId":53368126,"lang":"it", "banner":{ "acceptButtonDisplay":true,"closeButtonDisplay":false,"customizeButtonDisplay":true,"explicitWithdrawal":true,"listPurposes":true,"position":"bottom","rejectButtonDisplay":true,"showPurposesToggles":true }};
+		var _iub = _iub || [];
+		_iub.csConfiguration = {
+			"askConsentAtCookiePolicyUpdate": true,
+			"floatingPreferencesButtonCaptionColor": "#FFFFFF",
+			"floatingPreferencesButtonColor": "#000000",
+			"floatingPreferencesButtonDisplay": "anchored-bottom-left",
+			"perPurposeConsent": true,
+			"siteId": 3132077,
+			"whitelabel": false,
+			"gdprAppliesGlobally": false,
+			"cookiePolicyId": 53368126,
+			"lang": "it",
+			"banner": {
+				"acceptButtonDisplay": true,
+				"closeButtonDisplay": false,
+				"customizeButtonDisplay": true,
+				"explicitWithdrawal": true,
+				"listPurposes": true,
+				"position": "bottom",
+				"rejectButtonDisplay": true,
+				"showPurposesToggles": true
+			}
+		};
 	</script>
 	<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
-	<?php
+<?php
 }
 
 // Funzione per aggiungere WP PUSHER nella barra di amministrazione
-function aggiungi_voce_wpadminbar($wp_admin_bar) {
-    // Cambia "Nuova Voce" con il testo desiderato per la tua voce nella barra di amministrazione
-    $wp_admin_bar->add_menu(array(
-        'id' => 'wppusheritem',
-        'title' => 'Aggiorna da GIT Repo',
-        'href' => '/wp-admin/admin.php?page=wppusher-themes',
-        'meta' => array(
-            'title' => 'Per eseguire l\'update del tema dalla repository', // Descrizione opzionale
-        ),
-    ));
+function aggiungi_voce_wpadminbar($wp_admin_bar)
+{
+	// Cambia "Nuova Voce" con il testo desiderato per la tua voce nella barra di amministrazione
+	$wp_admin_bar->add_menu(array(
+		'id' => 'wppusheritem',
+		'title' => 'Aggiorna da GIT Repo',
+		'href' => '/wp-admin/admin.php?page=wppusher-themes',
+		'meta' => array(
+			'title' => 'Per eseguire l\'update del tema dalla repository', // Descrizione opzionale
+		),
+	));
 }
 
 // Aggiungi la funzione alla barra di amministrazione
 add_action('admin_bar_menu', 'aggiungi_voce_wpadminbar', 999);
+
+function wp_maintenance_mode()
+{
+	if (!current_user_can('edit_themes') || !is_user_logged_in()) {
+		wp_die('
+        <h1>Stiamo aggiornando il nostro sito.</h1>
+        <p>Sul sito sono in corso degli aggiornamenti. Si prega di ritornare più tardi.</p> ', 'Sito in modalità manutenzione');
+	}
+}
+add_action('get_header', 'wp_maintenance_mode');

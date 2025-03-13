@@ -223,4 +223,4 @@ function wp_maintenance_mode()
         <p>Sul sito sono in corso degli aggiornamenti. Si prega di ritornare più tardi.</p> ', 'Sito in modalità manutenzione');
 	}
 }
-add_action('get_header', 'wp_maintenance_mode');
+add_action('template_redirect', 'wp_maintenance_mode');
